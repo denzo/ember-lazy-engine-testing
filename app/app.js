@@ -6,7 +6,17 @@ import config from './config/environment';
 const App = Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
-  Resolver
+  Resolver,
+  // eslint-disable-next-line ember/avoid-leaking-state-in-ember-objects
+  engines: {
+    templateEditor: {
+      dependencies: {
+        services: [
+          'session'
+        ]
+      }
+    }
+  }
 });
 
 loadInitializers(App, config.modulePrefix);
