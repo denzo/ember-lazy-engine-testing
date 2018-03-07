@@ -1,7 +1,22 @@
-# engine-testing
+## Integration test for a component in a lazy engine.
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+I could only find one way to include the engine code in the testing. It involves adding the script tags manually in the `tests/index.html`
+
+```
+<script src="{{rootURL}}engines-dist/my-engine/assets/engine.js"></script>
+<script src="{{rootURL}}engines-dist/my-engine/assets/engine-vendor.js"></script>
+```
+
+Lazy engines documentation describes the `app` folder in [the following way](https://github.com/ember-engines/ember-engines#app):
+```
+Assets in this folder don't make sense and will be ignored as they break the isolation guarantees of engines.
+```
+
+The above makes sense but I was unable to lazy load an engine without adding the `<script>` tags manually. 
+
+
+Another interesting fact is that if you do use the engine's custom resolver like this `setupTest/setupRenderingTest(hooks, { customEngineResolver });`
+
 
 ## Prerequisites
 
